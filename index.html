@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>For Nuru ❤️ - VIP Access</title>
+<style>
+  body{margin:0;background:#0f0c12;color:white;font-family:system-ui;display:flex;align-items:center;justify-content:center;height:100vh}
+  .app{width:95%;max-width:900px;height:90vh;background:#1a1620;border-radius:24px;display:flex;overflow:hidden;border:1px solid #3a2a4a;box-shadow:0 0 40px #ff8ac233}
+  .login{margin:auto;text-align:center;padding:40px}
+  .login h1{color:#f8d9a8;font-size:32px}
+  .login input{padding:12px 20px;border-radius:20px;border:none;background:#2a2235;color:white;margin:8px;width:240px;outline:none;text-align:center}
+  .login button{padding:12px 30px;border-radius:20px;border:none;background:linear-gradient(90deg,#ff9eb8,#b07bff);color:white;font-weight:bold;cursor:pointer;margin-top:10px}
+  .chat{flex:1;display:flex;flex-direction:column}
+  .header{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #3a2a4a;background:#211c2a}
+  .header b{color:#f8d9a8}
+  .messages{flex:1;padding:20px;overflow-y:auto;display:flex;flex-direction:column;gap:12px}
+  .msg{max-width:70%;padding:12px 16px;border-radius:18px;font-size:14px;line-height:1.4;word-wrap:break-word}
+  .msg.nuru{align-self:flex-start;background:#ffd3e0;color:#4a2030;border-bottom-left-radius:4px}
+  .msg.drex{align-self:flex-end;background:#b18cff;color:white;border-bottom-right-radius:4px}
+  .input{display:flex;gap:10px;padding:16px;background:#211c2a}
+  .input input{flex:1;padding:14px 18px;border-radius:20px;border:none;background:#2a2235;color:white;outline:none}
+  .heart{position:fixed;animation:float 2s ease-out forwards;pointer-events:none;z-index:99}
+  @keyframes float{0%{transform:translateY(0) scale(1);opacity:1}100%{transform:translateY(-150px) scale(1.5);opacity:0}}
+</style>
+</head>
+<body>
+<div class="app" id="app">
+  <div class="login" id="loginBox">
+    <h1>For Nuru ❤️</h1>
+    <p style="color:#c9a8ff">VIP Access • Only You & Me</p>
+    <input id="username" placeholder="Drex or Nuru" /><br>
+    <input id="pass" type="password" placeholder="Our secret key" value="nuru123" /><br>
+    <button onclick="login()">Enter Our World 💜</button>
+    <p style="font-size:11px;color:#666;margin-top:20px">Hint key: nuru123</p>
+  </div>
+</div>
+
+<script>
+let me = "";
+const app = document.getElementById('app');
+let msgs = JSON.parse(localStorage.getItem('drex_nuru_chat')||'[]');
+
+function login(){
+  let u = document.getElementById('username').value.trim().toLowerCase();
+  let p = document.getElementById('pass').value;
+  if(p!=='nuru123' || (u!=='drex' && u!=='nuru')){ 
+    alert('Only Drex & Nuru allowed ❤️ Check name & key (nuru123)'); return; 
+  }
+  me = u;
+  showChat();
+}
+
+function showChat(){
+  app.innerHTML = `
+  <div class="chat">
+    <div class="header">
+      <span>💜 <b>Drex</b> • Online</span>
+      <span>🔒</span>
+      <span>💖 <b>Nuru</b> • Online</span>
+    </div>
+    <div class="messages" id="msgs"></div>
+    <div class="input">
+      <input id="text" placeholder="Write to ${me==='drex'?'Nuru ❤️':'Drex 💜'}..." onkeydown="if(event.key==='Enter')send()">
+      <button onclick="send()" style="background:linear-gradient(90deg,#ff9eb8,#b07bff);border:none;border-radius:50%;width:42px;height:42px;color:white;cursor:pointer">➤</button>
+    </div>
+  </div>`;
+  render();
+  if(me==='nuru' && msgs.length===0){
+    msgs.push({from:'drex', text:'I made this world for only us, Nuru ❤️ Just you and me. No one else can see this, forever. ✨'});
+    save();
+  }
+}
+
+function render(){
+  const box = document.getElementById('msgs');
+  if(!box) return;
+  box.innerHTML = msgs.map(m=>`<div class="msg ${m.from}">${m.text}</div>`).join('');
+  box.scrollTop = box.scrollHeight;
+}
+function send(){
+  const i = document.getElementById('text');
+  if(!i.value.trim()) return;
+  msgs.push({from:me, text:i.value});
+  i.value='';
+  save(); render(); popHeart();
+}
+function save(){ localStorage.setItem('drex_nuru_chat', JSON.stringify(msgs)); }
+function popHeart(){
+  let h = document.createElement('div'); h.className='heart'; 
+  h.innerHTML = me==='drex' ? '💜' : '💖'; 
+  h.style.left=(Math.random()*80+10)+'vw'; h.style.top='70vh'; h.style.fontSize='28px'; 
+  document.body.appendChild(h); setTimeout(()=>h.remove(),2000);
+}
+</script>
+</body>
+</html>
