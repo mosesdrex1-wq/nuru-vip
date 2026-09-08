@@ -6,33 +6,45 @@
 <title>Nuru VIP ❤️</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:linear-gradient(135deg,#ff9a9e,#fecfef);height:100vh;display:flex;justify-content:center;align-items:center}
-.box{background:white;width:95%;max-width:400px;height:90vh;border-radius:20px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,0.2)}
-.header{background:#ff4d6d;color:white;padding:15px;text-align:center;font-weight:bold;font-size:18px}
-#login{padding:30px;display:flex;flex-direction:column;gap:15px;flex:1;justify-content:center}
-#login input{padding:15px;border-radius:10px;border:1px solid #ddd;font-size:16px}
-#login button{padding:15px;background:#ff4d6d;color:white;border:none;border-radius:10px;font-size:18px;font-weight:bold}
-#chat{display:none;flex-direction:column;flex:1}
-#msgs{flex:1;overflow-y:auto;padding:15px;display:flex;flex-direction:column;gap:10px;background:#fff5f5}
-.msg{max-width:75%;padding:10px 14px;border-radius:18px;font-size:15px;word-wrap:break-word}
-.me{align-self:flex-end;background:#ff4d6d;color:white;border-bottom-right-radius:4px}
-.other{align-self:flex-start;background:white;border:1px solid #eee;border-bottom-left-radius:4px}
-.name{font-size:11px;opacity:0.7;margin-bottom:3px}
-.input-area{display:flex;padding:10px;border-top:1px solid #eee;gap:10px}
-.input-area input{flex:1;padding:12px;border-radius:20px;border:1px solid #ddd}
-.input-area button{background:#ff4d6d;color:white;border:none;width:45px;height:45px;border-radius:50%;font-size:20px}
+body{background:radial-gradient(circle at top,#2a0a4a,#080810);height:100vh;display:flex;justify-content:center;align-items:center}
+.box{background:#12121a;width:96%;max-width:410px;height:92vh;border-radius:26px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 0 50px rgba(255,77,109,0.35);border:1px solid rgba(255,215,0,0.25)}
+.header{background:linear-gradient(90deg,#ff4d6d,#8a2be2);color:white;padding:14px;text-align:center;font-weight:bold;letter-spacing:1px}
+#login{padding:22px;display:flex;flex-direction:column;gap:14px;flex:1;justify-content:center;background:radial-gradient(circle at center,#1e1e32,#0f0f14)}
+.caution{background:rgba(255,77,109,0.12);border:1px solid rgba(255,77,109,0.3);border-radius:12px;padding:12px;text-align:center;color:#ff9ab0;font-size:12px;line-height:1.4}
+.romantic{margin:10px 0;background:rgba(138,43,226,0.15);border:1px solid rgba(138,43,226,0.3);border-radius:15px;padding:15px;text-align:center;min-height:70px;display:flex;align-items:center;justify-content:center}
+.romantic p{color:#ffb3d9;font-size:14px;font-style:italic;line-height:1.4;transition:0.5s}
+#login h2{color:white;text-align:center;font-size:26px}
+#login input{padding:15px;border-radius:12px;border:1px solid #333;background:#1f1f2f;color:white;font-size:16px;outline:none}
+#login input:focus{border-color:#ff4d6d;box-shadow:0 0 10px #ff4d6d}
+#login button{padding:15px;background:linear-gradient(90deg,#ff4d6d,#ff8a00);color:white;border:none;border-radius:12px;font-size:17px;font-weight:bold;box-shadow:0 5px 15px rgba(255,77,109,0.4)}
+#chat{display:none;flex-direction:column;flex:1;background:#0f0f14}
+#msgs{flex:1;overflow-y:auto;padding:15px;display:flex;flex-direction:column;gap:10px;background:#0f0f14}
+.msg{max-width:76%;padding:11px 14px;border-radius:18px;font-size:15px;word-wrap:break-word}
+.me{align-self:flex-end;background:linear-gradient(135deg,#8a2be2,#ff4d6d);color:white;border-bottom-right-radius:4px}
+.other{align-self:flex-start;background:#232333;color:white;border-bottom-left-radius:4px;border:1px solid #333}
+.name{font-size:10px;opacity:0.6;margin-bottom:3px;color:#ffb3c6}
+.input-area{display:flex;padding:12px;background:#1a1a2e;border-top:1px solid #333;gap:10px;align-items:center}
+.input-area input{flex:1;padding:13px;border-radius:25px;border:1px solid #333;background:#232333;color:white;outline:none}
+.input-area button{background:linear-gradient(135deg,#ff4d6d,#8a2be2);color:white;border:none;width:48px;height:48px;border-radius:50%;font-size:20px}
 </style>
 </head>
 <body>
 <div class="box">
-<div class="header">Nuru VIP ❤️ Private</div>
+<div class="header">NURU VIP ❤️ PRIVATE</div>
+
 <div id="login">
-<h2 style="text-align:center">Welcome ❤️</h2>
-<input id="uname" placeholder="Your Name: Drex or Nuru">
-<input id="ukey" type="password" placeholder="Secret Key">
-<button onclick="join()">Enter Our World 💖</button>
-<p style="text-align:center;font-size:12px;color:#999">Only Drex & Nuru — Key: LOVE</p>
+<h2>💜 Locked 💖</h2>
+
+<div class="caution">⚠️ CAUTION: Private love space<br>Only <b>Drex</b> & <b>Nuru</b> allowed. Our secret ❤️</div>
+
+<div class="romantic"><p id="romText">You are my favorite notification ❤️</p></div>
+
+<input id="uname" placeholder="Name: Drex or Nuru">
+<input id="ukey" type="password" placeholder="Secret Key: LOVE">
+<button onclick="join()">Unlock Our World 🔓</button>
+<p style="text-align:center;font-size:11px;color:#555">Drex ❤️ Nuru Forever</p>
 </div>
+
 <div id="chat">
 <div id="msgs"></div>
 <div class="input-area">
@@ -41,9 +53,11 @@ body{background:linear-gradient(135deg,#ff9a9e,#fecfef);height:100vh;display:fle
 </div>
 </div>
 </div>
+
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
 import { getFirestore, collection, addDoc, onSnapshot, orderBy, query, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCz5pO6O-ytj3PaNYAC36TCZA8QHjCq7lY",
   authDomain: "nuru-love.firebaseapp.com",
@@ -52,6 +66,36 @@ const firebaseConfig = {
   messagingSenderId: "190648413438",
   appId: "1:190648413438:web:8072bfb8954a1a3f5b09af"
 };
+
+// RANDOM ROMANTIC WORDS
+const romanticWords = [
+  "You are my favorite notification ❤️",
+  "In a world of many, you are my only 💜",
+  "I still get butterflies when I see your name 💖",
+  "You + Me = Forever 🔐",
+  "My heart beats your name, Nuru 💓",
+  "No one else matters, just us ❤️",
+  "Every message from you is my happy place ✨",
+  "I fell for you and I'm still falling 💜",
+  "You are my today and all my tomorrows 🌙",
+  "Drex ❤️ Nuru - Written in the stars",
+  "Your smile is my favorite code 💻❤️",
+  "Locked, private, only us — just how I like it 🔓"
+];
+
+let idx = 0;
+function changeRom(){
+  const el = document.getElementById('romText');
+  el.style.opacity = 0;
+  setTimeout(()=>{
+    el.innerText = romanticWords[idx];
+    el.style.opacity = 1;
+    idx = (idx + 1) % romanticWords.length;
+  }, 300);
+}
+changeRom();
+setInterval(changeRom, 4000);
+
 const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 const col = collection(db, "nuru_chat");
@@ -59,8 +103,8 @@ let myName = "";
 window.join = () => {
   const n = document.getElementById('uname').value.trim();
   const k = document.getElementById('ukey').value.trim();
-  if((n !== 'Drex' && n !== 'Nuru')){alert('Name must be Drex or Nuru');return}
-  if(k !== 'LOVE'){alert('Wrong Secret Key! Key is LOVE');return}
+  if(n!== 'Drex' && n!== 'Nuru'){alert('Name must be Drex or Nuru');return}
+  if(k!== 'LOVE'){alert('Wrong Key! Key is LOVE');return}
   myName = n;
   document.getElementById('login').style.display='none';
   document.getElementById('chat').style.display='flex';
