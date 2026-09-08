@@ -30,14 +30,13 @@ body{margin:0;background:#0a0a0f;color:#fff;font-family:Poppins,sans-serif;heigh
 .send{background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;font-size:18px}
 .music-bar{position:fixed;bottom:0;left:0;right:0;height:56px;background:#000;border-top:1px solid #2a1218;display:flex;align-items:center;gap:10px;padding:0 12px;z-index:4}
 .music-bar audio{flex:1;height:32px;filter:invert(1)}
-#blast{position:fixed;inset:0;z-index:100;display:none;place-items:center;pointer-events:none}
-.blast-heart{font-size:140px;animation:boom 1.2s cubic-bezier(.17,.67,.48,1.3);text-shadow:0 0 40px #ff0a3c}
-@keyframes boom{0%{transform:scale(0)}20%{transform:scale(1.9)}40%{transform:scale(1.4)}60%{transform:scale(1.8)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+#blast{position:fixed;inset:0;z-index:100;display:none;pointer-events:none;overflow:hidden}
+.particle{position:absolute;left:50%;top:50%;pointer-events:none}
 .shake{animation:shake 0.6s ease-in-out}
-@keyframes shake{0%,100%{transform:translate(0,0)}10%{transform:translate(-8px,4px)}20%{transform:translate(8px,-4px)}30%{transform:translate(-6px,-6px)}40%{transform:translate(6px,6px)}50%{transform:translate(-4px,8px)}60%{transform:translate(4px,-8px)}}
+@keyframes shake{0%,100%{transform:translate(0,0)}10%{transform:translate(-10px,5px)}20%{transform:translate(10px,-5px)}30%{transform:translate(-8px,-8px)}40%{transform:translate(8px,8px)}50%{transform:translate(-6px,10px)}60%{transform:translate(6px,-10px)}}
 </style></head><body>
 <canvas id="hearts"></canvas>
-<div id="blast"><div class="blast-heart">❤️</div></div>
+<div id="blast"></div>
 <div class="login" id="login"><div class="card">
 <h1>For Nuru Abdulart ❤️</h1>
 <p style="font-size:10px;color:#ff8fab;letter-spacing:1px;margin:8px 0 16px">PRIVATE VAULT • AUTHORIZED ONLY</p>
@@ -49,7 +48,7 @@ body{margin:0;background:#0a0a0f;color:#fff;font-family:Poppins,sans-serif;heigh
 <div class="top"><div class="top-title">My Home Is Where You Are, My Nuru ❤️</div><div class="top-sub">MY FOREVER IN ONE PERSON</div><div class="timerRow" id="timerRow"></div></div>
 <div class="chat" id="chat"></div>
 <div class="bar"><label class="btn" style="background:#1a0a0f;border:1px solid #ff0a3c;display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Type something sweet..."><button class="btn send" onclick="send()">➤</button></div>
-<div class="music-bar"><span style="color:#ff0a3c">❤️</span><audio id="song" controls autoplay loop><source src="promise.mp3" type="audio/mpeg"><source src="perfect.mp3" type="audio/mpeg"></audio><span style="font-size:11px;color:#ff8fab">Promise</span></div>
+<div class="music-bar"><span style="color:#ff0a3c">❤️</span><audio id="song" controls autoplay loop><source src="promise.mp3" type="audio/mpeg"></audio><span style="font-size:11px;color:#ff8fab">Promise</span></div>
 </div>
 <script>
 c=document.getElementById('hearts');x=c.getContext('2d');function R(){c.width=innerWidth;c.height=innerHeight}R();onresize=R;
@@ -59,9 +58,23 @@ const start=new Date('2026-03-23T00:00:00');
 function calc(){let d=new Date()-start;let days=Math.floor(d/86400000);return{days,weeks:Math.floor(days/7),months:Math.floor(days/30.44),rem:days%30}}
 function renderCounts(){let o=calc();document.getElementById('timerRow').innerHTML=`<div>${o.days} Days</div><div>${o.weeks} Weeks</div><div>${o.months}M ${o.rem}D</div>`;}renderCounts();setInterval(renderCounts,60000);
 let me='';const chat=document.getElementById('chat');const KEY='nuru10';
-function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();let s=document.getElementById('song');s.volume=0.9;s.play().catch(()=>{});}
+function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').volume=0.9;document.getElementById('song').play().catch(()=>{});}
 function load(){let d=JSON.parse(localStorage.getItem(KEY)||'[]');chat.innerHTML='';d.forEach(o=>add(o.t,o.w,o.i,o.m,false))}
-function massiveBlast(){let b=document.getElementById('blast');b.style.display='grid';document.getElementById('app').classList.add('shake');for(let i=0;i<100;i++){setTimeout(()=>h.push({X:c.width/2 + (Math.random()-0.5)*c.width*0.8,Y:c.height/2 + (Math.random()-0.5)*c.height*0.6,S:18+Math.random()*30,V:1+Math.random()*2.5,ico:['❤️','💖','💗','💓','💞'][Math.floor(Math.random()*5)]}),i*12)}setTimeout(()=>{b.style.display='none';document.getElementById('app').classList.remove('shake')},1300);}
+function massiveBlast(){
+ let b=document.getElementById('blast');
+ b.innerHTML='';b.style.display='block';
+ document.getElementById('app').classList.add('shake');
+ for(let i=0;i<50;i++){
+   let p=document.createElement('div');p.className='particle';
+   p.innerText=['❤️','💖','💗','💓','💞','💘'][Math.floor(Math.random()*6)];
+   p.style.fontSize=(20+Math.random()*30)+'px';
+   let angle=Math.random()*Math.PI*2;let dist=100+Math.random()*300;
+   let tx=Math.cos(angle)*dist;let ty=Math.sin(angle)*dist;
+   p.animate([{transform:'translate(-50%,-50%) scale(0)',opacity:1},{transform:`translate(calc(-50% + ${tx}px), calc(-50% + ${ty}px)) scale(1.4)`,opacity:1,offset:0.7},{transform:`translate(calc(-50% + ${tx}px), calc(-50% + ${ty*1.3}px)) scale(0)`,opacity:0}],{duration:1000+Math.random()*700,easing:'cubic-bezier(.17,.67,.32,1.2)'});
+   b.appendChild(p);setTimeout(()=>p.remove(),1300);
+ }
+ setTimeout(()=>{b.style.display='none';document.getElementById('app').classList.remove('shake')},1300);
+}
 function add(t,w,i,m,s=true){let d=document.createElement('div');d.className='b '+(w===me?'me':'her');if(t)d.innerHTML+=`<div>${t}</div>`;if(i)d.innerHTML+=`<img src="${i}" style="max-width:100%;border-radius:14px;margin-top:6px;display:block">`;d.innerHTML+=`<small>${m} • ${w}</small>`;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}let low=(t||'').toLowerCase();if(low.includes('i love you')||low.includes('love you')||low.includes('luv u'))massiveBlast();}
 function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add(t,me,null,tm,true);inp.value='';}
 document.getElementById('msg').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
