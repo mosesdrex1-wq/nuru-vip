@@ -34,25 +34,21 @@ body{color:#fff;font-family:Poppins,sans-serif;height:100vh;overflow:hidden}
 .particle{position:absolute;left:50%;top:50%}
 .shake{animation:shake.6s ease}
 @keyframes shake{0%,100%{transform:translate(0,0)}20%{transform:translate(-6px,3px)}40%{transform:translate(6px,-3px)}}
-
-/* WhatsApp style menu */
 #msgMenu{position:fixed;inset:0;z-index:200;display:none;align-items:flex-end;justify-content:center;background:rgba(0,0,0,.6);backdrop-filter:blur(4px)}
-#msgMenu.show{display:flex}
+#msgMenu.show{display:flex!important}
 .menuBox{width:100%;max-width:400px;background:#1a1214;border-top:1.5px solid #ff0a3c;border-radius:22px 22px 0 0;padding:14px;animation:slideUp.25s}
 @keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
-.menuBox button{width:100%;padding:14px;background:#0f0a0c;border:1px solid #2a1f;color:#fff;border-radius:12px;margin:6px 0;font-size:14px;text-align:left}
+.menuBox button{width:100%;padding:14px;background:#0f0a0c;border:1px solid #3a1a22;color:#fff;border-radius:12px;margin:6px 0;font-size:14px;text-align:left}
 .menuBox button.del{color:#ff4a6a;border-color:#ff0a3c}
-.menuBox.cancel{margin-top:8px;text-align:center;background:#000;color:#ff8fab}
+.menuBox button.cancelBtn{margin-top:8px;text-align:center;background:#000;color:#ff8fab;justify-content:center}
 </style></head><body>
 <canvas id="hearts"></canvas>
 <div id="blast"></div>
-
-<!-- MSG MENU -->
 <div id="msgMenu" onclick="closeMenu()"><div class="menuBox" onclick="event.stopPropagation()">
 <div style="width:40px;height:4px;background:#3a1a22;border-radius:99px;margin:0 auto 12px"></div>
 <button onclick="doEdit()">✏️ Edit Message</button>
 <button class="del" onclick="doDelete()">🗑️ Delete Message</button>
-<button class="cancel" onclick="closeMenu()">Cancel</button>
+<button class="cancelBtn" onclick="closeMenu()">Cancel</button>
 </div></div>
 
 <div class="login" id="login"><div class="card">
@@ -62,14 +58,12 @@ body{color:#fff;font-family:Poppins,sans-serif;height:100vh;overflow:hidden}
 <button onclick="go()">Unlock Our World 🔐</button>
 <div class="caution">⚠️ CAUTION: Specialized for NURU ABDULART ONLY. This is a sealed love vault built with black magic. If you try to force your way in, you may fall into a pit you will never come out from... STAY AWAY.</div>
 </div></div>
-
 <div class="app" id="app">
 <div class="top"><div class="top-title">My Home Is Where You Are, My Nuru ❤️</div><div class="top-sub">MY FOREVER IN ONE PERSON</div><div class="timerRow" id="timerRow"></div></div>
 <div class="chat" id="chat"></div>
 <div class="bar"><label class="btn" style="background:#1a0a0f;border:1px solid #ff0a3c;display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Type something sweet..."><button class="btn send" onclick="send()">➤</button></div>
 <div class="music-bar"><span style="color:#ff0a3c">❤️</span><audio id="song" controls autoplay loop><source src="promise.mp3" type="audio/mpeg"></audio><span style="font-size:11px;color:#ff8fab">Promise</span></div>
 </div>
-
 <script>
 c=document.getElementById('hearts');x=c.getContext('2d');function R(){c.width=innerWidth;c.height=innerHeight}R();onresize=R;
 h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:13+Math.random()*12,V:0.9+Math.random()*1.2,ico:Math.random()>0.6?'❤️':Math.random()>0.5?'💖':'💗'})},180);
@@ -77,15 +71,17 @@ h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:13+Math.ra
 const start=new Date('2026-03-23T00:00:00');
 function calc(){let d=new Date()-start;let days=Math.floor(d/86400000);return{days,weeks:Math.floor(days/7),months:Math.floor(days/30.44),rem:days%30}}
 function renderCounts(){let o=calc();document.getElementById('timerRow').innerHTML=`<div>${o.days} Days</div><div>${o.weeks} Weeks</div><div>${o.months}M ${o.rem}D</div>`;}renderCounts();setInterval(renderCounts,60000);
-
 let me='';const chat=document.getElementById('chat');const KEY='nuru10';
 let selectedId=null;
-
 function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').volume=0.9;document.getElementById('song').play().catch(()=>{});}
-
-function load(){let d=JSON.parse(localStorage.getItem(KEY)||'[]');chat.innerHTML='';d.forEach(o=>render(o,false))}
+function load(){
+ let d=JSON.parse(localStorage.getItem(KEY)||'[]');
+ let changed=false;
+ d.forEach(o=>{if(!o.id){o.id=Date.now()+Math.random();changed=true}});
+ if(changed)localStorage.setItem(KEY,JSON.stringify(d));
+ chat.innerHTML='';d.forEach(o=>renderMsg(o,false));
+}
 function save(d){localStorage.setItem(KEY,JSON.stringify(d))}
-
 function massiveBlast(){
  let b=document.getElementById('blast');b.innerHTML='';b.style.display='block';
  document.getElementById('app').classList.add('shake');
@@ -97,47 +93,46 @@ function massiveBlast(){
    b.appendChild(p);setTimeout(()=>p.remove(),1300);
  }setTimeout(()=>{b.style.display='none';document.getElementById('app').classList.remove('shake')},1300);
 }
-
-function render(o, isNew=true){
+function renderMsg(o,isNew=true){
  let d=document.createElement('div');d.className='b '+(o.w===me?'me':'her');d.dataset.id=o.id;
  if(o.t)d.innerHTML+=`<div>${o.t}</div>`;
  if(o.i)d.innerHTML+=`<img src="${o.i}" style="max-width:100%;border-radius:12px;margin-top:6px;display:block">`;
  d.innerHTML+=`<small>${o.m} • ${o.w}${o.edited?' • edited':''}</small>`;
- d.onclick=()=>openMenu(o.id,o.w);
- d.oncontextmenu=(e)=>{e.preventDefault();openMenu(o.id,o.w)};
+ d.addEventListener('click',()=>openMenu(o.id,o.w));
  chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
- if(o.t){let low=o.t.toLowerCase();if(isNew&&(low.includes('i love you')||low.includes('love you')||low.includes('luv u')))massiveBlast();}
+ if(isNew&&o.t){let low=o.t.toLowerCase();if(low.includes('i love you')||low.includes('love you')||low.includes('luv u'))massiveBlast();}
 }
-
-function add(t,w,i,m){
+function addMsg(t,w,i,m){
  let arr=JSON.parse(localStorage.getItem(KEY)||'[]');
  let obj={id:Date.now()+Math.random(),t,w,i,m,edited:false};
- arr.push(obj);save(arr);render(obj,true);
+ arr.push(obj);save(arr);renderMsg(obj,true);
 }
-
 function openMenu(id,owner){
+ // allow both to edit own - if you want admin for all, remove this check
  if(owner!==me)return;
  selectedId=id;
  document.getElementById('msgMenu').classList.add('show');
 }
 function closeMenu(){document.getElementById('msgMenu').classList.remove('show');selectedId=null}
 function doDelete(){
- if(!selectedId)return;
+ if(selectedId==null)return;
  let arr=JSON.parse(localStorage.getItem(KEY)||'[]');
- arr=arr.filter(o=>o.id!==selectedId);save(arr);load();closeMenu();
+ arr=arr.filter(o=>String(o.id)!==String(selectedId));
+ save(arr);closeMenu();load();
 }
 function doEdit(){
- if(!selectedId)return;
+ if(selectedId==null)return;
  let arr=JSON.parse(localStorage.getItem(KEY)||'[]');
- let obj=arr.find(o=>o.id===selectedId);
- if(!obj||!obj.t){alert('Cannot edit image');return}
- let newText=prompt('Edit message:',obj.t);
- if(newText===null)return;
- if(newText.trim()==='')return doDelete();
- obj.t=newText.trim();obj.edited=true;save(arr);load();closeMenu();
+ let obj=arr.find(o=>String(o.id)===String(selectedId));
+ if(!obj){closeMenu();return}
+ if(obj.i &&!obj.t){alert('Image cannot be edited');return}
+ let nt=prompt('Edit message:',obj.t||'');
+ if(nt===null){closeMenu();return}
+ if(nt.trim()===''){doDelete();return}
+ obj.t=nt.trim();obj.edited=true;
+ save(arr);closeMenu();load();
 }
-
-function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add(t,me,null,tm);inp.value='';}
+function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});addMsg(t,me,null,tm);inp.value='';}
 document.getElementById('msg').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
-document.getElementById('pic').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add('',me,ev.target.result,tm)};r.readAsDataURL(f)});
+document.getElementById('pic').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});addMsg('',me,ev.target.result,tm)};r.readAsDataURL(f)});
 </script></body></html>
