@@ -13,20 +13,20 @@ body{margin:0;background:#0e0618;color:#fff;font-family:Poppins,sans-serif;heigh
 .app{display:none;flex-direction:column;height:100vh;z-index:1;position:relative}
 .top{display:flex;justify-content:space-between;padding:10px 12px;background:rgba(255,255,255,.07);font-size:11px}
 .timer{font-family:Great Vibes,cursive;font-size:18px;color:#ff8aba;text-align:center}
-.chat{flex:1;overflow:auto;padding:12px 10px 140px;display:flex;flex-direction:column;gap:10px}
+.chat{flex:1;overflow:auto;padding:12px 10px 130px;display:flex;flex-direction:column;gap:10px}
 .b{max-width:76%;padding:10px 14px;border-radius:18px;font-size:14px}
 .me{align-self:flex-end;background:linear-gradient(135deg,#c87bff,#ff7ea8)}
 .her{align-self:flex-start;background:rgba(255,255,255,.12)}
-.bar{position:fixed;bottom:52px;left:0;right:0;display:flex;gap:8px;padding:10px;background:rgba(15,8,25,.95);border-top:1px solid rgba(255,180,220,.12)}
+.bar{position:fixed;bottom:54px;left:0;right:0;display:flex;gap:8px;padding:10px;background:rgba(15,8,25,.95);border-top:1px solid rgba(255,180,220,.12)}
 .bar input{flex:1;padding:12px 14px;border-radius:999px;border:1px solid rgba(255,255,255,.15);background:rgba(255,255,255,.08);color:#fff}
 .btn{width:44px;height:44px;border-radius:50%;border:0}
 .send{background:linear-gradient(135deg,#ff7ea8,#a56bff);color:#fff}
-.yt-wrap{position:fixed;bottom:0;left:0;right:0;height:52px;background:#000;display:flex;align-items:center;justify-content:center;z-index:5;border-top:1px solid rgba(255,100,150,.3)}
-.yt-wrap iframe{width:100%;height:52px}
+.music-bar{position:fixed;bottom:0;left:0;right:0;height:54px;background:rgba(0,0,0,.85);backdrop-filter:blur(10px);display:flex;align-items:center;gap:10px;padding:0 12px;border-top:1px solid rgba(255,100,150,.3)}
+.music-bar audio{flex:1;height:36px}
 </style></head><body>
 <canvas id="hearts"></canvas>
 <div class="login" id="login"><div class="card">
-<h1>For Nuru ❤️</h1><p style="opacity:.6;font-size:11px;margin-bottom:12px">10 MONTHS • Our Song is Perfect</p>
+<h1>For Nuru ❤️</h1><p style="opacity:.6;font-size:11px;margin-bottom:12px">10 MONTHS • Perfect</p>
 <input id="n" placeholder="Drex or Nuru"><input id="k" type="password" placeholder="nuru123">
 <button onclick="go()">Enter Our World 💜</button>
 </div></div>
@@ -34,8 +34,10 @@ body{margin:0;background:#0e0618;color:#fff;font-family:Poppins,sans-serif;heigh
 <div class="top"><div>💜 Drex Online</div><div class="timer">10 Months Forever ❤️</div><div>💖 Nuru Online</div></div>
 <div class="chat" id="chat"></div>
 <div class="bar"><label class="btn" style="background:rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Write to Nuru..."><button class="btn send" onclick="send()">➤</button></div>
-<div class="yt-wrap">
-<iframe src="https://www.youtube.com/embed/2Vv-BfVoq4g?autoplay=0&controls=1&loop=1&playlist=2Vv-BfVoq4g" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope" allowfullscreen></iframe>
+<div class="music-bar">
+<span>🎵</span>
+<audio id="song" controls autoplay loop src="perfect.mp3"></audio>
+<span style="font-size:11px;opacity:.7">Perfect - Ed Sheeran</span>
 </div>
 </div>
 <script>
@@ -43,7 +45,7 @@ c=document.getElementById('hearts');x=c.getContext('2d');function R(){c.width=in
 h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:12+Math.random()*14,V:1+Math.random()*2})},200);
 (function A(){x.clearRect(0,0,c.width,c.height);h.forEach((o,i)=>{o.Y-=o.V;x.font=o.S+'px serif';x.fillText('💖',o.X,o.Y);if(o.Y<-20)h.splice(i,1)});requestAnimationFrame(A)})();
 let me='';const chat=document.getElementById('chat');const KEY='nuru10';
-function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('Wrong key');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();}
+function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('Wrong key');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();let s=document.getElementById('song');s.volume=0.8;s.play().catch(()=>{});}
 function load(){let d=JSON.parse(localStorage.getItem(KEY)||'[]');chat.innerHTML='';d.forEach(o=>add(o.t,o.w,o.i,o.m,false))}
 function add(t,w,i,m,s=true){let d=document.createElement('div');d.className='b '+(w===me?'me':'her');if(t)d.innerHTML+='<div>'+t+'</div>';if(i)d.innerHTML+='<img src="'+i+'" style="max-width:100%;border-radius:10px;margin-top:5px">';d.innerHTML+='<div style="font-size:9px;opacity:.6;margin-top:4px">'+m+' • '+w+'</div>';chat.appendChild(d);chat.scrollTop=chat.scrollHeight;if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}}
 function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add(t,me,null,tm,true);inp.value='';}
