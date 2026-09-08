@@ -10,42 +10,43 @@ body{margin:0;background:#0a0a0f;color:#fff;font-family:Poppins,sans-serif;heigh
 .card{width:90%;max-width:380px;background:linear-gradient(180deg,#1c1215,#0f0a0c);border:1.5px solid #ff0a3c;border-radius:26px;padding:28px;text-align:center;box-shadow:0 0 40px rgba(255,10,60,.35)}
 .card h1{font-family:Great Vibes,cursive;font-size:44px;background:linear-gradient(90deg,#fff,#ff8fab,#ff0a3c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0}
 .card input{width:100%;padding:13px;margin:8px 0;border-radius:999px;border:1px solid #3a1a22;background:#1a1214;color:#fff;text-align:center;outline:none}
-.card button{width:100%;padding:13px;margin-top:12px;border-radius:999px;border:0;background:linear-gradient(90deg,#ff0a3c,#ff5a8a);color:#fff;font-weight:700;letter-spacing:.5px;box-shadow:0 6px 20px rgba(255,10,60,.4)}
+.card button{width:100%;padding:13px;margin-top:12px;border-radius:999px;border:0;background:linear-gradient(90deg,#ff0a3c,#ff5a8a);color:#fff;font-weight:700}
 .caution{margin-top:16px;padding:12px;background:#000;border:1px solid #3a0a15;color:#ff8fab;font-size:10px;line-height:1.4;border-radius:12px}
 .app{display:none;flex-direction:column;height:100vh;position:relative;z-index:2}
-.top{background:#000;border-bottom:2px solid #ff0a3c;padding:10px;text-align:center;position:relative;z-index:3}
-.top.title{font-family:Great Vibes,cursive;font-size:24px;background:linear-gradient(90deg,#fff,#ff8fab);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.timerRow{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.top{background:#000;border-bottom:2px solid #ff0a3c;padding:12px 8px;text-align:center}
+.top-title{font-family:Great Vibes,cursive;font-size:26px;background:linear-gradient(90deg,#fff,#ff8fab,#ff0a3c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1.2}
+.top-sub{font-size:10px;letter-spacing:2px;color:#ff8fab;margin-top:2px}
+.timerRow{display:flex;justify-content:center;gap:8px;margin-top:8px}
 .timerRow div{background:#1a0a0f;border:1px solid #ff0a3c;color:#ff8fab;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700}
-.chat{flex:1;overflow:auto;padding:14px 10px 132px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(ellipse at top,#1a0a12 0%,#0a0a0f 70%);position:relative;z-index:2}
-.b{max-width:78%;padding:12px 16px;border-radius:20px;font-size:14px;line-height:1.4;animation:pop.3s ease;position:relative}
+.chat{flex:1;overflow:auto;padding:14px 10px 132px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(ellipse at top,#1a0a12 0%,#0a0a0f 70%)}
+.b{max-width:78%;padding:12px 16px;border-radius:20px;font-size:14px;animation:pop.3s}
 @keyframes pop{from{transform:scale(.85) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
 .me{align-self:flex-end;background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;border-bottom-right-radius:5px;box-shadow:0 4px 15px rgba(255,10,60,.3)}
-.her{align-self:flex-start;background:#fff;color:#1a0a0f;border-bottom-left-radius:5px;box-shadow:0 4px 15px rgba(255,255,255,.15);font-weight:500}
+.her{align-self:flex-start;background:#fff;color:#1a0a0f;border-bottom-left-radius:5px;font-weight:500}
 .b small{display:block;font-size:9px;opacity:.7;margin-top:4px}
 .bar{position:fixed;bottom:56px;left:0;right:0;display:flex;gap:8px;padding:10px;background:#000;border-top:1.5px solid #ff0a3c;z-index:4}
 .bar input{flex:1;padding:12px 18px;border-radius:999px;border:1px solid #3a1a22;background:#1a1214;color:#fff;outline:none}
-.btn{width:46px;height:46px;border-radius:50%;border:0;cursor:pointer}
-.send{background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,10,60,.4)}
+.btn{width:46px;height:46px;border-radius:50%;border:0}
+.send{background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;font-size:18px}
 .music-bar{position:fixed;bottom:0;left:0;right:0;height:56px;background:#000;border-top:1px solid #2a1218;display:flex;align-items:center;gap:10px;padding:0 12px;z-index:4}
 .music-bar audio{flex:1;height:32px;filter:invert(1)}
-#blast{position:fixed;inset:0;z-index:100;display:none;place-items:center;pointer-events:none;background:radial-gradient(rgba(255,10,60,.15),transparent)}
-#blast.big{font-size:120px;animation:heartBoom.9s ease-out}
-@keyframes heartBoom{0%{transform:scale(0) rotate(-20deg)}50%{transform:scale(1.8) rotate(10deg)}100%{transform:scale(1) rotate(0)}}
-.shake{animation:shake.5s}
-@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+#blast{position:fixed;inset:0;z-index:100;display:none;place-items:center;pointer-events:none}
+.blast-heart{font-size:140px;animation:boom 1.2s cubic-bezier(.17,.67,.48,1.3);text-shadow:0 0 40px #ff0a3c}
+@keyframes boom{0%{transform:scale(0)}20%{transform:scale(1.9)}40%{transform:scale(1.4)}60%{transform:scale(1.8)}80%{transform:scale(1.2)}100%{transform:scale(1)}}
+.shake{animation:shake 0.6s ease-in-out}
+@keyframes shake{0%,100%{transform:translate(0,0)}10%{transform:translate(-8px,4px)}20%{transform:translate(8px,-4px)}30%{transform:translate(-6px,-6px)}40%{transform:translate(6px,6px)}50%{transform:translate(-4px,8px)}60%{transform:translate(4px,-8px)}}
 </style></head><body>
 <canvas id="hearts"></canvas>
-<div id="blast"><div class="big">❤️</div></div>
+<div id="blast"><div class="blast-heart">❤️</div></div>
 <div class="login" id="login"><div class="card">
 <h1>For Nuru Abdulart ❤️</h1>
 <p style="font-size:10px;color:#ff8fab;letter-spacing:1px;margin:8px 0 16px">PRIVATE VAULT • AUTHORIZED ONLY</p>
 <input id="n" placeholder="Drex or Nuru"><input id="k" type="password" placeholder="Secret Key">
 <button onclick="go()">Unlock Our World 🔐</button>
-<div class="caution">⚠️ CAUTION: Specialized for NURU ABDULART ONLY. This is a sealed love vault built with black magic. If you try to force your way in, you may fall into a pit you will never come out from... Your heart will be cursed forever. STAY AWAY.</div>
+<div class="caution">⚠️ CAUTION: Specialized for NURU ABDULART ONLY. This is a sealed love vault built with black magic. If you try to force your way in, you may fall into a pit you will never come out from... STAY AWAY.</div>
 </div></div>
 <div class="app" id="app">
-<div class="top"><div class="title">10 Months Forever ❤️</div><div class="timerRow" id="timerRow"></div></div>
+<div class="top"><div class="top-title">My Home Is Where You Are, My Nuru ❤️</div><div class="top-sub">MY FOREVER IN ONE PERSON</div><div class="timerRow" id="timerRow"></div></div>
 <div class="chat" id="chat"></div>
 <div class="bar"><label class="btn" style="background:#1a0a0f;border:1px solid #ff0a3c;display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Type something sweet..."><button class="btn send" onclick="send()">➤</button></div>
 <div class="music-bar"><span style="color:#ff0a3c">❤️</span><audio id="song" controls autoplay loop src="perfect.mp3"></audio><span style="font-size:11px;color:#ff8fab">Perfect</span></div>
@@ -55,28 +56,18 @@ c=document.getElementById('hearts');x=c.getContext('2d');function R(){c.width=in
 h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:13+Math.random()*12,V:0.9+Math.random()*1.2,ico:Math.random()>0.6?'❤️':Math.random()>0.5?'💖':'💗'})},180);
 (function A(){x.clearRect(0,0,c.width,c.height);h.forEach((o,i)=>{o.Y-=o.V;x.font=o.S+'px serif';x.fillText(o.ico,o.X,o.Y);if(o.Y<-30)h.splice(i,1)});requestAnimationFrame(A)})();
 const start=new Date('2026-03-23T00:00:00');
-function calc(){let diff=new Date()-start;let days=Math.floor(diff/86400000);let weeks=Math.floor(days/7);let months=Math.floor(days/30.44);let rem=days%30;return {days,weeks,months,rem}}
-function renderCounts(){let {days,weeks,months,rem}=calc();document.getElementById('timerRow').innerHTML=`<div>${days} Days</div><div>${weeks} Weeks</div><div>${months}M ${rem}D</div>`;}
-renderCounts();setInterval(renderCounts,60000);
+function calc(){let d=new Date()-start;let days=Math.floor(d/86400000);return{days,weeks:Math.floor(days/7),months:Math.floor(days/30.44),rem:days%30}}
+function renderCounts(){let o=calc();document.getElementById('timerRow').innerHTML=`<div>${o.days} Days</div><div>${o.weeks} Weeks</div><div>${o.months}M ${o.rem}D</div>`;}renderCounts();setInterval(renderCounts,60000);
 let me='';const chat=document.getElementById('chat');const KEY='nuru10';
-function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED: This vault will curse you.');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').volume=0.85;document.getElementById('song').play().catch(()=>{});renderCounts();}
+function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').play().catch(()=>{});}
 function load(){let d=JSON.parse(localStorage.getItem(KEY)||'[]');chat.innerHTML='';d.forEach(o=>add(o.t,o.w,o.i,o.m,false))}
 function massiveBlast(){
  let b=document.getElementById('blast');b.style.display='grid';
- document.body.classList.add('shake');
- for(let i=0;i<80;i++){setTimeout(()=>h.push({X:Math.random()*c.width,Y:Math.random()*c.height,S:16+Math.random()*28,V:2+Math.random()*3,ico:Math.random()>0.5?'❤️':'💖'}),i*20)}
- setTimeout(()=>{b.style.display='none';document.body.classList.remove('shake')},1100);
+ document.getElementById('app').classList.add('shake');
+ for(let i=0;i<100;i++){setTimeout(()=>h.push({X:c.width/2 + (Math.random()-0.5)*c.width*0.8,Y:c.height/2 + (Math.random()-0.5)*c.height*0.6,S:18+Math.random()*30,V:1+Math.random()*2.5,ico:['❤️','💖','💗','💓','💞'][Math.floor(Math.random()*5)]}),i*12)}
+ setTimeout(()=>{b.style.display='none';document.getElementById('app').classList.remove('shake')},1300);
 }
-function add(t,w,i,m,s=true){
- let d=document.createElement('div');d.className='b '+(w===me?'me':'her');
- if(t)d.innerHTML+=`<div>${t}</div>`;
- if(i)d.innerHTML+=`<img src="${i}" style="max-width:100%;border-radius:14px;margin-top:6px;display:block">`;
- d.innerHTML+=`<small>${m} • ${w}</small>`;
- chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
- if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}
- let low=t?t.toLowerCase():'';
- if(low.includes('i love you')||low.includes('love you')||low.includes('i luv you')){massiveBlast()}
-}
+function add(t,w,i,m,s=true){let d=document.createElement('div');d.className='b '+(w===me?'me':'her');if(t)d.innerHTML+=`<div>${t}</div>`;if(i)d.innerHTML+=`<img src="${i}" style="max-width:100%;border-radius:14px;margin-top:6px;display:block">`;d.innerHTML+=`<small>${m} • ${w}</small>`;chat.appendChild(d);chat.scrollTop=chat.scrollHeight;if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}let low=(t||'').toLowerCase();if(low.includes('i love you')||low.includes('love you')||low.includes('luv u')||low.includes('nuru')){if(low.includes('love')||low.includes('luv'))massiveBlast();}}
 function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add(t,me,null,tm,true);inp.value='';}
 document.getElementById('msg').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 document.getElementById('pic').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add('',me,ev.target.result,tm,true)};r.readAsDataURL(f)});
