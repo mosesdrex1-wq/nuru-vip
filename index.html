@@ -1,67 +1,82 @@
 <!DOCTYPE html>
 <html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Nuru - Our Time</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<title>For Nuru Abdulart</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 <style>
-body{margin:0;background:#fff0f3;font-family:Poppins,sans-serif;height:100vh;overflow:hidden}
-#hearts{position:fixed;inset:0;pointer-events:none}
-.login{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(#ff2d55,#a00a2e)}
-.card{width:90%;max-width:380px;background:#fff;border-radius:24px;padding:26px;text-align:center;box-shadow:0 20px 60px rgba(0,0,0,.35)}
-.card h1{font-family:Great Vibes,cursive;font-size:48px;color:#ff0a3c;margin:0}
-.countBox{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:14px 0}
-.countBox div{background:#fff0f3;border:1px solid #ffc2cf;border-radius:14px;padding:10px 4px}
-.countBox b{display:block;font-size:18px;color:#ff0a3c}
-.countBox span{font-size:10px;color:#7a3a4a;letter-spacing:.5px}
-.card input{width:100%;padding:12px;margin:6px 0;border-radius:999px;border:1px solid #ffc2cf;background:#fff8f9;text-align:center;outline:none}
-.card button{width:100%;padding:13px;margin-top:10px;border-radius:999px;border:0;background:#ff0a3c;color:#fff;font-weight:600}
-.app{display:none;flex-direction:column;height:100vh;position:relative}
-.top{background:#fff;border-bottom:2px solid #ff0a3c;padding:8px 10px;text-align:center}
-.timerRow{display:flex;justify-content:center;gap:14px;margin-top:4px;font-size:11px;font-weight:600;color:#ff0a3c}
-.timerRow div{background:#fff0f3;border:1px solid #ffd0d9;padding:4px 10px;border-radius:999px}
-.chat{flex:1;overflow:auto;padding:14px 10px 132px;display:flex;flex-direction:column;gap:10px;background:#fff5f7}
-.b{max-width:75%;padding:11px 14px;border-radius:18px;font-size:14px;animation:pop.25s}
-@keyframes pop{from{transform:scale(.9);opacity:0}to{transform:scale(1);opacity:1}}
-.me{align-self:flex-end;background:#ff0a3c;color:#fff;border-bottom-right-radius:4px}
-.her{align-self:flex-start;background:#fff;border:1px solid #ffd0d9;color:#2b0a14;border-bottom-left-radius:4px}
-.bar{position:fixed;bottom:56px;left:0;right:0;display:flex;gap:8px;padding:10px;background:#fff;border-top:1px solid #ffd0d9}
-.bar input{flex:1;padding:12px 16px;border-radius:999px;border:1px solid #ffc2cf;background:#fff8f9;outline:none}
-.btn{width:44px;height:44px;border-radius:50%;border:0}
-.send{background:#ff0a3c;color:#fff}
-.music-bar{position:fixed;bottom:0;left:0;right:0;height:56px;background:#111;color:#fff;display:flex;align-items:center;gap:10px;padding:0 12px}
-.music-bar audio{flex:1;height:30px;filter:invert(1)}
-#blast{position:fixed;inset:0;z-index:999;display:none;place-items:center;pointer-events:none;font-size:90px}
+*{box-sizing:border-box}
+body{margin:0;background:#0a0a0f;color:#fff;font-family:Poppins,sans-serif;height:100vh;overflow:hidden}
+#hearts{position:fixed;inset:0;pointer-events:none;z-index:1}
+.login{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at center,#1a0a14 0%,#000 70%)}
+.card{width:90%;max-width:380px;background:linear-gradient(180deg,#1c1215,#0f0a0c);border:1.5px solid #ff0a3c;border-radius:26px;padding:28px;text-align:center;box-shadow:0 0 40px rgba(255,10,60,.35)}
+.card h1{font-family:Great Vibes,cursive;font-size:44px;background:linear-gradient(90deg,#fff,#ff8fab,#ff0a3c);-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin:0}
+.card input{width:100%;padding:13px;margin:8px 0;border-radius:999px;border:1px solid #3a1a22;background:#1a1214;color:#fff;text-align:center;outline:none}
+.card button{width:100%;padding:13px;margin-top:12px;border-radius:999px;border:0;background:linear-gradient(90deg,#ff0a3c,#ff5a8a);color:#fff;font-weight:700;letter-spacing:.5px;box-shadow:0 6px 20px rgba(255,10,60,.4)}
+.caution{margin-top:16px;padding:12px;background:#000;border:1px solid #3a0a15;color:#ff8fab;font-size:10px;line-height:1.4;border-radius:12px}
+.app{display:none;flex-direction:column;height:100vh;position:relative;z-index:2}
+.top{background:#000;border-bottom:2px solid #ff0a3c;padding:10px;text-align:center;position:relative;z-index:3}
+.top.title{font-family:Great Vibes,cursive;font-size:24px;background:linear-gradient(90deg,#fff,#ff8fab);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.timerRow{display:flex;justify-content:center;gap:8px;margin-top:6px}
+.timerRow div{background:#1a0a0f;border:1px solid #ff0a3c;color:#ff8fab;padding:5px 12px;border-radius:999px;font-size:11px;font-weight:700}
+.chat{flex:1;overflow:auto;padding:14px 10px 132px;display:flex;flex-direction:column;gap:10px;background:radial-gradient(ellipse at top,#1a0a12 0%,#0a0a0f 70%);position:relative;z-index:2}
+.b{max-width:78%;padding:12px 16px;border-radius:20px;font-size:14px;line-height:1.4;animation:pop.3s ease;position:relative}
+@keyframes pop{from{transform:scale(.85) translateY(10px);opacity:0}to{transform:scale(1) translateY(0);opacity:1}}
+.me{align-self:flex-end;background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;border-bottom-right-radius:5px;box-shadow:0 4px 15px rgba(255,10,60,.3)}
+.her{align-self:flex-start;background:#fff;color:#1a0a0f;border-bottom-left-radius:5px;box-shadow:0 4px 15px rgba(255,255,255,.15);font-weight:500}
+.b small{display:block;font-size:9px;opacity:.7;margin-top:4px}
+.bar{position:fixed;bottom:56px;left:0;right:0;display:flex;gap:8px;padding:10px;background:#000;border-top:1.5px solid #ff0a3c;z-index:4}
+.bar input{flex:1;padding:12px 18px;border-radius:999px;border:1px solid #3a1a22;background:#1a1214;color:#fff;outline:none}
+.btn{width:46px;height:46px;border-radius:50%;border:0;cursor:pointer}
+.send{background:linear-gradient(135deg,#ff0a3c,#ff5a8a);color:#fff;font-size:18px;box-shadow:0 4px 12px rgba(255,10,60,.4)}
+.music-bar{position:fixed;bottom:0;left:0;right:0;height:56px;background:#000;border-top:1px solid #2a1218;display:flex;align-items:center;gap:10px;padding:0 12px;z-index:4}
+.music-bar audio{flex:1;height:32px;filter:invert(1)}
+#blast{position:fixed;inset:0;z-index:100;display:none;place-items:center;pointer-events:none;background:radial-gradient(rgba(255,10,60,.15),transparent)}
+#blast.big{font-size:120px;animation:heartBoom.9s ease-out}
+@keyframes heartBoom{0%{transform:scale(0) rotate(-20deg)}50%{transform:scale(1.8) rotate(10deg)}100%{transform:scale(1) rotate(0)}}
+.shake{animation:shake.5s}
+@keyframes shake{0%,100%{transform:translateX(0)}25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
 </style></head><body>
 <canvas id="hearts"></canvas>
-<div id="blast">❤️</div>
+<div id="blast"><div class="big">❤️</div></div>
 <div class="login" id="login"><div class="card">
-<h1>For Nuru ❤️</h1>
-<div class="countBox" id="countLogin"></div>
-<p style="font-size:10px;color:#8a4a5a">Since March 23, 2026 • Valentine Edition</p>
-<input id="n" placeholder="Drex or Nuru"><input id="k" type="password" placeholder="nuru123">
-<button onclick="go()">Enter Our World</button>
+<h1>For Nuru Abdulart ❤️</h1>
+<p style="font-size:10px;color:#ff8fab;letter-spacing:1px;margin:8px 0 16px">PRIVATE VAULT • AUTHORIZED ONLY</p>
+<input id="n" placeholder="Drex or Nuru"><input id="k" type="password" placeholder="Secret Key">
+<button onclick="go()">Unlock Our World 🔐</button>
+<div class="caution">⚠️ CAUTION: Specialized for NURU ABDULART ONLY. This is a sealed love vault built with black magic. If you try to force your way in, you may fall into a pit you will never come out from... Your heart will be cursed forever. STAY AWAY.</div>
 </div></div>
 <div class="app" id="app">
-<div class="top">
-<div style="font-family:Great Vibes,cursive;font-size:22px;color:#ff0a3c">10 Months Forever ❤️</div>
-<div class="timerRow" id="timerRow"></div>
-</div>
+<div class="top"><div class="title">10 Months Forever ❤️</div><div class="timerRow" id="timerRow"></div></div>
 <div class="chat" id="chat"></div>
-<div class="bar"><label class="btn" style="background:#ffe0e7;display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Write to Nuru..."><button class="btn send" onclick="send()">➤</button></div>
-<div class="music-bar"><span>❤️</span><audio id="song" controls autoplay loop src="perfect.mp3"></audio><span style="font-size:11px">Perfect</span></div>
+<div class="bar"><label class="btn" style="background:#1a0a0f;border:1px solid #ff0a3c;display:flex;align-items:center;justify-content:center">📷<input type="file" id="pic" accept="image/*" hidden></label><input id="msg" placeholder="Type something sweet..."><button class="btn send" onclick="send()">➤</button></div>
+<div class="music-bar"><span style="color:#ff0a3c">❤️</span><audio id="song" controls autoplay loop src="perfect.mp3"></audio><span style="font-size:11px;color:#ff8fab">Perfect</span></div>
 </div>
 <script>
 c=document.getElementById('hearts');x=c.getContext('2d');function R(){c.width=innerWidth;c.height=innerHeight}R();onresize=R;
-h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:12+Math.random()*14,V:1+Math.random()*1.5,ico:Math.random()>0.5?'💖':'🎀'})},200);
-(function A(){x.clearRect(0,0,c.width,c.height);h.forEach((o,i)=>{o.Y-=o.V;x.font=o.S+'px serif';x.fillText(o.ico,o.X,o.Y);if(o.Y<-20)h.splice(i,1)});requestAnimationFrame(A)})();
+h=[];setInterval(()=>{h.push({X:Math.random()*c.width,Y:c.height+20,S:13+Math.random()*12,V:0.9+Math.random()*1.2,ico:Math.random()>0.6?'❤️':Math.random()>0.5?'💖':'💗'})},180);
+(function A(){x.clearRect(0,0,c.width,c.height);h.forEach((o,i)=>{o.Y-=o.V;x.font=o.S+'px serif';x.fillText(o.ico,o.X,o.Y);if(o.Y<-30)h.splice(i,1)});requestAnimationFrame(A)})();
 const start=new Date('2026-03-23T00:00:00');
-function calc(){let diff=new Date()-start;let days=Math.floor(diff/86400000);let weeks=Math.floor(days/7);let months=Math.floor(days/30.44);let remDays=days%30;return {days,weeks,months,remDays}}
-function renderCounts(){let {days,weeks,months,remDays}=calc();let html=`<div><b>${days}</b><span>DAYS</span></div><div><b>${weeks}</b><span>WEEKS</span></div><div><b>${months}</b><span>MONTHS</span></div>`;document.getElementById('countLogin').innerHTML=html;document.getElementById('timerRow').innerHTML=`<div>${days} Days</div><div>${weeks} Weeks</div><div>${months}M ${remDays}D</div>`;}
+function calc(){let diff=new Date()-start;let days=Math.floor(diff/86400000);let weeks=Math.floor(days/7);let months=Math.floor(days/30.44);let rem=days%30;return {days,weeks,months,rem}}
+function renderCounts(){let {days,weeks,months,rem}=calc();document.getElementById('timerRow').innerHTML=`<div>${days} Days</div><div>${weeks} Weeks</div><div>${months}M ${rem}D</div>`;}
 renderCounts();setInterval(renderCounts,60000);
 let me='';const chat=document.getElementById('chat');const KEY='nuru10';
-function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('Wrong');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').volume=0.8;document.getElementById('song').play().catch(()=>{});}
+function go(){let n=document.getElementById('n').value.toLowerCase();let k=document.getElementById('k').value;if((n!=='drex'&&n!=='nuru')||k!=='nuru123'){alert('🚫 ACCESS DENIED: This vault will curse you.');return}me=n==='drex'?'Drex':'Nuru';document.getElementById('login').style.display='none';document.getElementById('app').style.display='flex';load();document.getElementById('song').volume=0.85;document.getElementById('song').play().catch(()=>{});renderCounts();}
 function load(){let d=JSON.parse(localStorage.getItem(KEY)||'[]');chat.innerHTML='';d.forEach(o=>add(o.t,o.w,o.i,o.m,false))}
-function blast(){let b=document.getElementById('blast');b.style.display='grid';b.animate([{transform:'scale(0)'},{transform:'scale(1.6)'}],{duration:500});for(let i=0;i<35;i++)setTimeout(()=>h.push({X:Math.random()*c.width,Y:c.height,S:18+Math.random()*18,V:2+Math.random()*2,ico:'❤️'}),i*30);setTimeout(()=>b.style.display='none',900)}
-function add(t,w,i,m,s=true){let d=document.createElement('div');d.className='b '+(w===me?'me':'her');if(t)d.innerHTML+='<div>'+t+'</div>';if(i)d.innerHTML+='<img src="'+i+'" style="max-width:100%;border-radius:12px;margin-top:5px">';d.innerHTML+='<div style="font-size:9px;opacity:.6;margin-top:4px">'+m+' • '+w+'</div>';chat.appendChild(d);chat.scrollTop=chat.scrollHeight;if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}if(t&&t.toLowerCase().includes('i love you'))blast();}
+function massiveBlast(){
+ let b=document.getElementById('blast');b.style.display='grid';
+ document.body.classList.add('shake');
+ for(let i=0;i<80;i++){setTimeout(()=>h.push({X:Math.random()*c.width,Y:Math.random()*c.height,S:16+Math.random()*28,V:2+Math.random()*3,ico:Math.random()>0.5?'❤️':'💖'}),i*20)}
+ setTimeout(()=>{b.style.display='none';document.body.classList.remove('shake')},1100);
+}
+function add(t,w,i,m,s=true){
+ let d=document.createElement('div');d.className='b '+(w===me?'me':'her');
+ if(t)d.innerHTML+=`<div>${t}</div>`;
+ if(i)d.innerHTML+=`<img src="${i}" style="max-width:100%;border-radius:14px;margin-top:6px;display:block">`;
+ d.innerHTML+=`<small>${m} • ${w}</small>`;
+ chat.appendChild(d);chat.scrollTop=chat.scrollHeight;
+ if(s){let a=JSON.parse(localStorage.getItem(KEY)||'[]');a.push({t,w,i,m});localStorage.setItem(KEY,JSON.stringify(a))}
+ let low=t?t.toLowerCase():'';
+ if(low.includes('i love you')||low.includes('love you')||low.includes('i luv you')){massiveBlast()}
+}
 function send(){let inp=document.getElementById('msg');let t=inp.value.trim();if(!t)return;let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add(t,me,null,tm,true);inp.value='';}
 document.getElementById('msg').addEventListener('keydown',e=>{if(e.key==='Enter')send()});
 document.getElementById('pic').addEventListener('change',e=>{let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=ev=>{let tm=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});add('',me,ev.target.result,tm,true)};r.readAsDataURL(f)});
